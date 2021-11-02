@@ -8,6 +8,15 @@ class ShopStore {
 	}
 	shops = [];
 
+	fetchShops = async () => {
+		try {
+			const response = await instance.get("/shops");
+			this.shops = response.data;
+		} catch (error) {
+			console.log("ShopStore -> fetchShops -> error", error);
+		}
+	};
+
 	createShop = async (newShop) => {
 		try {
 			const formData = new FormData();
@@ -24,12 +33,18 @@ class ShopStore {
 		}
 	};
 
-	fetchShops = async () => {
+	
+
+	deleteProduct = async (productID) => {
+		
 		try {
-			const response = await instance.get("/shops");
-			this.shops = response.data;
+			await instance.delete(`/products/${productID}`);
+			
+			this.shops.product = this.shops.product.filter(
+				(product) => product._id !== productID
+			);
 		} catch (error) {
-			console.log("ShopStore -> fetchShops -> error", error);
+			console.log(error);
 		}
 	};
 }
