@@ -11,7 +11,9 @@ function ProductList({ products, shopId }) {
 		.filter((product) =>
 			product.name.toLowerCase().includes(query.toLowerCase())
 		)
-		.map((product) => <Card key={product._id} product={product} />);
+		.map((product) => (
+			<Card key={product._id} product={product} shopId={shopId} />
+		));
 
 	return (
 		<div>

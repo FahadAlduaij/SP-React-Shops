@@ -50,10 +50,14 @@ class ShopStore {
 		}
 	};
 
-	deleteProduct = async (productID) => {
+	deleteProduct = async (product, shopID) => {
 		try {
-			await instance.delete(`/products/${productID}`);
-			this.shops = this.shops.filter((product) => product._id !== productID);
+			await instance.delete(`/products/${product._id}`);
+			const shop = this.shops.find((shop) => shop._id === shopID);
+			shop.product = shop.product.filter(
+				(_product) => _product._id !== product._id
+			);
+			console.log(this.shops);
 		} catch (error) {
 			console.log(error);
 		}

@@ -1,9 +1,13 @@
+import { observer } from "mobx-react";
 import { Button, Card, Col } from "react-bootstrap";
 import shopStore from "../stores/shopStore";
 import ProductModal from "./ProductModal";
 
-function ProductCard({ product }) {
-	const handleDelete = () => shopStore.deleteProduct(product._id);
+function ProductCard({ product, shopId, products }) {
+	const handleDelete = (event) => {
+		event.preventDefault();
+		shopStore.deleteProduct(product, shopId);
+	};
 
 	return (
 		<Col className="col-lg-4 mx-auto">
@@ -23,4 +27,4 @@ function ProductCard({ product }) {
 	);
 }
 
-export default ProductCard;
+export default observer(ProductCard);

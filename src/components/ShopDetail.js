@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import React from "react";
 import { Redirect, useParams } from "react-router";
 import shopStore from "../stores/shopStore";
@@ -8,8 +9,6 @@ const ShopDetail = () => {
 	const shop = shopStore.shops.find((shop) => shop.slug === shopSlug);
 	if (!shop) return <Redirect to="/shops" />;
 
-
-
 	return (
 		<div className=" flex row detail m-3">
 			<h2 className="title">{shop.name}</h2>
@@ -19,4 +18,4 @@ const ShopDetail = () => {
 	);
 };
 
-export default ShopDetail;
+export default observer(ShopDetail);
