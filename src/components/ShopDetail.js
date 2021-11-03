@@ -14,7 +14,7 @@ const ShopDetail = () => {
 		<div className=" flex row detail m-3">
 			<h2 className="title">{shop.name}</h2>
 			<img className="detail-img" src={shop.image} alt={shop.name} />
-			<ProductList products={shop.product} />
+			<ProductList products={shop.product} shopId={shop._id} />
 		</div>
 	);
 };

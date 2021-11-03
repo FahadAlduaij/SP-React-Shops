@@ -43,7 +43,8 @@ class ShopStore {
 				`/shops/${shopID}/products`,
 				formData
 			);
-			this.shops.push(response.data);
+			const shop = this.shops.find((shop) => shop._id === shopID);
+			shop.product.push(response.data);
 		} catch (error) {
 			console.log(error);
 		}

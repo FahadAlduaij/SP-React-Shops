@@ -2,7 +2,7 @@ import { Button, InputGroup, FormControl, Modal } from "react-bootstrap";
 import { useState } from "react";
 import shopStore from "../stores/shopStore";
 
-function ProductModal() {
+function ProductModal({ shopId }) {
 	const [show, setShow] = useState(false);
 	const [product, setProduct] = useState({
 		name: "",
@@ -24,7 +24,7 @@ function ProductModal() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		shopStore.createProduct(product);
+		shopStore.createProduct(product, shopId);
 		handleClose();
 	};
 
