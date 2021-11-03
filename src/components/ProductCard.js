@@ -1,9 +1,9 @@
 import { Button, Card, Col } from "react-bootstrap";
-import productStore from "../stores/productStore";
+import shopStore from "../stores/shopStore";
 import ProductModal from "./ProductModal";
 
 function ProductCard({ product }) {
-	const handleDelete = () => productStore.deleteProduct(product._id);
+	const handleDelete = () => shopStore.deleteProduct(product._id);
 
 	return (
 		<Col className="col-lg-4 mx-auto">
