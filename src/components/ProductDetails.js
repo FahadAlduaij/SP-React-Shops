@@ -3,11 +3,14 @@ import { Card, Col, Button } from "react-bootstrap";
 import productStore from "../stores/shopStore";
 
 function ProductDetails({ product }) {
-	const handleDelete = () => {
+	const handleDelete = (event) => {
+		event.preventDefault();
 		productStore.deleteProduct(product._id);
+		console.log(product.name);
 	};
+
 	return (
-		<Col className="col-lg-4 mx-auto">
+		<Col className="col-lg-4 mx-auto m-4">
 			<Card>
 				<Card.Img variant="top" src={product.image} alt={product.name} />
 				<Card.Body>

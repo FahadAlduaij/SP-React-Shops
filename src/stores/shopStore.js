@@ -33,16 +33,26 @@ class ShopStore {
 		}
 	};
 
-	
+	createProduct = async (newProduct, shopID) => {
+		try {
+			const formData = new FormData();
+			for (const key in newProduct) {
+				formData.append(key, newProduct[key]);
+			}
+			const response = await instance.post(
+				`/shops/${shopID}/products`,
+				formData
+			);
+			this.shops.push(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	deleteProduct = async (productID) => {
-		
 		try {
 			await instance.delete(`/products/${productID}`);
-			
-			this.shops.product = this.shops.product.filter(
-				(product) => product._id !== productID
-			);
+			this.shops = this.shops.filter((product) => product._id !== productID);
 		} catch (error) {
 			console.log(error);
 		}
