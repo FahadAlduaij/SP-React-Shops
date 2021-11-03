@@ -57,7 +57,6 @@ class ShopStore {
 			shop.product = shop.product.filter(
 				(_product) => _product._id !== product._id
 			);
-			console.log(this.shops);
 		} catch (error) {
 			console.log(error);
 		}
