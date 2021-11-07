@@ -9,7 +9,7 @@ function ShopCard({ shop }) {
 					<Card.Img variant="top" src={shop.image} alt={shop.name} />
 				</Link>
 				<Card.Body>
-					<Card.Title>Title:</Card.Title>
+					<Card.Title>Name:</Card.Title>
 					<Card.Title>{shop.name}</Card.Title>
 				</Card.Body>
 				<Card.Body>
